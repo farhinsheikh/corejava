@@ -1,4 +1,4 @@
-public class EmpWageComputation {
+public class EmpWageBuilderObject {
    public static final int IS_PART_TIME=1;
    public static final int IS_FULL_TIME=2;
 
@@ -9,7 +9,7 @@ public class EmpWageComputation {
 	private int totalEmpWage;
 
 
-   public EmpWageComputation(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth){
+   public EmpWageBuilderObject(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth){
 	this.company= company;
 	this.empRatePerHour= empRatePerHour;
 	this.numOfWorkingDays= numOfWorkingDays;
@@ -48,10 +48,10 @@ public class EmpWageComputation {
 }
       public static void main(String args[]){
       EmpWageBuilderObject dMart = new EmpWageBuilderObject ("DMart", 20, 2, 10);
-		EmpWageBuilderObject reliance = new EmpWageBuilderObject ("Relience", 10, 4, 20);
+		EmpWageBuilderObject reliance = new EmpWageBuilderObject ("Reliance", 10, 4, 20);
 		dMart.computeEmpWage();
 		System.out.println(dMart);
-		relience.computeEmpWage();
+		reliance.computeEmpWage();
 		System.out.println(reliance);
 	}
 
