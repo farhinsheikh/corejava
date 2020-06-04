@@ -48,11 +48,11 @@ public class EmpWageBuilderObject {
 }
       public static void main(String args[]){
       EmpWageBuilderObject dMart = new EmpWageBuilderObject ("DMart", 20, 2, 10);
-		EmpWageBuilderObject reliance = new EmpWageBuilderObject ("Reliance", 10, 4, 20);
+		EmpWageBuilderObject relience = new EmpWageBuilderObject ("Reliance", 10, 4, 20);
 		dMart.computeEmpWage();
 		System.out.println(dMart);
-		reliance.computeEmpWage();
-		System.out.println(reliance);
+		relience.computeEmpWage();
+		System.out.println(relience);
 	}
 
 }
