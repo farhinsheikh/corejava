@@ -3,14 +3,16 @@ import java.util.*;
 class Employee {
 	public static void main(String[] args) {
 	Scanner sc = new Scanner(System.in);
-	ArrayList<CompanyEmpWage> cp = new ArrayList<CompanyEmpWage>();
+	ArrayList<CompanyEmpWage> cp = new
+	ArrayList<CompanyEmpWage>();
 	boolean end_key = true;
 	System.out.println(" Welcome to Employee Wage Computation Program\n");
 	while (end_key) {
-	System.out.println("	1: Add	2: View your company's total wage	9: Exit");
+	System.out.println("	1: Add	2: View your company's total wage	3: Exit");
 	int choice = sc.nextInt();
 	int i = 0;
 	switch (choice) {
+
 		case 1:
 			sc.nextLine();
 			System.out.println(" Enter name of your company ");
@@ -21,22 +23,25 @@ class Employee {
 			int days = sc.nextInt();
 			System.out.println(" Enter the number of working hours in a day :");
 			int hours = sc.nextInt();
-			cp.add(new CompanyEmpWage(name ,wage, days, hours));
+			System.out.println(" Enter the number of Employes in company :");
+			int numEmp = sc.nextInt();
+			cp.add(new CompanyEmpWage(name ,wage, days, hours , numEmp));
 		break;
 		case 2:
 			sc.nextLine();
 			System.out.println(" Enter the name of your company to view total wage:");
 			String update = sc.nextLine();
 			Iterator<CompanyEmpWage> iter = cp.iterator();
-		while (iter.hasNext()) {
+			while (iter.hasNext()) {
 			CompanyEmpWage data = iter.next();
-			if (update.equals(data.getRecord())) {
-				System.out.println("	Your company's total wage is:"+data.getValues());
+				if (update.equals(data.getRecord())) {
+					System.out.println(" Your company's TotalWagePerDay is:"+data.getValues());
+					System.out.println("	Your company's TotalWagePerMonth is:"+data.getMonth());
+
 		}
 	}
-
 		break;
-		case 9:
+		case 3:
 			end_key = false; break;
 		default:
 			System.out.println("	Enter valid input");
@@ -50,18 +55,24 @@ class CompanyEmpWage{
 	int wage;
 	int days;
 	int hours;
-	int totalWage;
-	CompanyEmpWage(String name,int wage, int days, int hours){
+	int companyTotalWagePerDay;
+	int companyTotalWagePerMonth;
+	CompanyEmpWage(String name, int wage, int days, int hours, int numEmp ){
 	this.name = name;
 	this.wage = wage;
 	this.days = days;
 	this.hours = hours;
-	this.totalWage = (wage * days * hours);
+	this.companyTotalWagePerDay = (wage * numEmp * hours);
+	this.companyTotalWagePerMonth = (wage * numEmp * hours * days);
 }
 public int getValues(){
-	return this.totalWage;
+	return this.companyTotalWagePerDay;
 }
+public int getMonth(){
+	return this.companyTotalWagePerMonth;
+}
+
 public String getRecord(){
 	return this.name;
-	}
+}
 }
