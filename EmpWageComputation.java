@@ -1,18 +1,22 @@
 import java.util.*;
 
 class Employee {
-	public static void main(String[] args) {
+	static void totalWageOfCompany(ArrayList<CompanyEmpWage>	cp){
+	for ( CompanyEmpWage p : cp ) {
+	System.out.println("company name :"+p.name+" companyTotalWage:"+p.companyTotalWagePerMonth);
+	}
+}
+public static void main(String[] args) {
 	Scanner sc = new Scanner(System.in);
 	ArrayList<CompanyEmpWage> cp = new
 	ArrayList<CompanyEmpWage>();
 	boolean end_key = true;
-	System.out.println(" Welcome to Employee Wage Computation Program\n");
+	System.out.println("	Welcome to Employee Wage Computation Program\n");
 	while (end_key) {
-	System.out.println("	1: Add	2: View your company's total wage	3: Exit");
+	System.out.println("	1: Add	2: View your company's total wage	3: Total Wage Of Companys	4: Exit");
 	int choice = sc.nextInt();
 	int i = 0;
 	switch (choice) {
-
 		case 1:
 			sc.nextLine();
 			System.out.println(" Enter name of your company ");
@@ -34,21 +38,25 @@ class Employee {
 			Iterator<CompanyEmpWage> iter = cp.iterator();
 			while (iter.hasNext()) {
 			CompanyEmpWage data = iter.next();
-				if (update.equals(data.getRecord())) {
-					System.out.println(" Your company's TotalWagePerDay is:"+data.getValues());
-					System.out.println("	Your company's TotalWagePerMonth is:"+data.getMonth());
-
+			if (update.equals(data.getRecord())) {
+				System.out.println(" Your company's TotalWagePerDay is:"+data.getValues());
+				System.out.println("	Your company's TotalWagePerMonth is:"+data.getMonth());
 		}
 	}
+
 		break;
 		case 3:
-			end_key = false; break;
-		default:
-			System.out.println("	Enter valid input");
+		totalWageOfCompany(cp);
 		break;
-		}
+
+		case 4:
+		end_key = false;
+		break;
+		default:
+		System.out.println("	Enter valid input");
+		break;
+   	}
 	}
-}
 }
 class CompanyEmpWage{
 	String name;
@@ -57,7 +65,7 @@ class CompanyEmpWage{
 	int hours;
 	int companyTotalWagePerDay;
 	int companyTotalWagePerMonth;
-	CompanyEmpWage(String name, int wage, int days, int hours, int numEmp ){
+	CompanyEmpWage(String name,int wage, int days, int hours, int numEmp ){
 	this.name = name;
 	this.wage = wage;
 	this.days = days;
@@ -75,4 +83,5 @@ public int getMonth(){
 public String getRecord(){
 	return this.name;
 }
+
 }
