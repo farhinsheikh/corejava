@@ -1,36 +1,34 @@
-import java.util.Scanner; 
+import java.util.Scanner;
 
-class Employee {
+class Employee implements computerEmpWage{
 
-public static void main(String[] args) { 
-	Scanner sc = new Scanner(System.in);
-	System.out.println("Welcome to Employee Wage Computation Program\n"); 
-	System.out.println("How many companies are there: "); 
-	int size = sc.nextInt();
-	CompanyEmpWage[] cp = new CompanyEmpWage[size]; 
-	for(int i =0; i < size; i++){
-	System.out.println("Enter details for company "+(i+1));
-	System.out.println("Enter the wage per hour of your company:");
-	int wage = sc.nextInt();
-	System.out.println("Enter the number of working day in a month :"); 
-	int days = sc.nextInt();
-	System.out.println("Enter the number of working hours in a day:");
-	int hours = sc.nextInt();
-	cp[i] = new CompanyEmpWage(wage, days, hours);
+	int workingDays = 0;
+	int totalHours = 0;
+	int empHours = 0;
+	int empRatePerHour = 20;
+	int salary = 0;
+	public void companyMethod(String companyName, int wage, int days, int hours){
+	int totalWage = ( wage * days * hours);
+	System.out.println("Total wage for a employee working full-time for a month:"+totalWage);
 }
-	int i=0;
-	for (CompanyEmpWage p : cp){ i++;
-	System.out.println("Total Wage for Company "+i+" is :"+ p.totalWage);
+
+
+public static void main(String[] args) {
+	Employee ep = new Employee();
+	Scanner sc = new Scanner(System.in);
+
+	System.out.println("Welcome to Employee Wage Computation Program\n");
+	String companyName = "Tata";
+	System.out.println("Company name :"+companyName);
+	System.out.println("Enter the wage per hour of your company :");
+	int wage = sc.nextInt();
+	System.out.println("Enter the number of working day in a month :");
+	int days = sc.nextInt();
+	System.out.println("Enter the number of working hours in a day :");
+	int hours = sc.nextInt();
+	ep.companyMethod(companyName, wage, days, hours);
 	}
 }
-}
-class CompanyEmpWage{ 
-	int wage;
-	int days; 
-	int hours;
-	int totalWage;
-	CompanyEmpWage(int wage, int days, int hours){ this.wage = wage;
-	this.days = days; this.hours = hours;
-	this.totalWage = (wage * days * hours);
-}
+	interface computerEmpWage{
+	public void companyMethod(String companyName,int wage,int days,int hours);
 }
